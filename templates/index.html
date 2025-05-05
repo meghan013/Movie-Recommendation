@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="hero">
+        <h2>Discover Your Next Favorite Movie</h2>
+    </section>
+    
+    <section class="top-rated">
+        <h2>Top Rated Movies</h2>
+        <div class="movie-grid">
+           {% for movie in top_movies %}
+<div class="movie-card">
+    <a href="/movie/{{ movie.id }}">
+        {% if movie.poster_path %}
+        <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
+        {% else %}
+        <div class="no-poster">No Image</div>
+        {% endif %}
+    </a>
+    <div class="movie-card-content">
+        <h3>{{ movie.title }}</h3>
+        <p>⭐ {{ movie.vote_average }}/10</p>
+    </div>
+</div>
+{% endfor %}
+
+        </div>
+    </section>
+    
+    <section class="genres">
+        <h2>Browse by Genre</h2>
+        <div class="genre-grid">
+            {% for genre in genres %}
+            <a href="/genre/{{ genre.id }}" class="genre-card">{{ genre.name }}</a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

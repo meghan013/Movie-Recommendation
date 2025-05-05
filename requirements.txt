@@ -1,0 +1,7 @@
+flask
+pandas
+numpy
+scikit-learn
+surprise
+requests
+python-dotenv
