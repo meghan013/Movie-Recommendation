@@ -22,9 +22,6 @@ recommender = HybridRecommender()
 # Initialize database
 init_db()
 
-@app.before_first_request
-def setup():
-    init_db()
 
 
 @app.before_request
@@ -220,6 +217,8 @@ def rate_movie():
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
+
+# Remove the init_db() call from the global scope and modify your __main__ block:
 
 if __name__ == '__main__':
     app.run(debug=True)
