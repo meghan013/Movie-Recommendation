@@ -22,6 +22,10 @@ recommender = HybridRecommender()
 # Initialize database
 init_db()
 
+@app.before_first_request
+def setup():
+    init_db()
+
 
 @app.before_request
 def before_request():
@@ -218,5 +222,4 @@ def rate_movie():
 
 
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True)
